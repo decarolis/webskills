@@ -1,0 +1,95 @@
+.Button button, .Button button::after {
+  width: 27rem;
+  height: 8rem;
+  font-size: 3rem;
+  background: #000;
+  border-right: 10px solid #0f1c0c;
+  border-top: 1px solid #000;
+  border-left: 10px solid #0f1c0c;
+  border-bottom: 8px solid #172a12;
+  color: #fff;
+  text-transform: uppercase;
+  outline: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.Button button:hover {
+  font-size: 3.5rem;
+}
+
+.Button button::after {
+  --slice-0: inset(50% 50% 50% 50%);
+  --slice-1: inset(80% -6px 0 0);
+  --slice-2: inset(50% -6px 30% 0);
+  --slice-3: inset(10% -6px 85% 0);
+  --slice-4: inset(40% -6px 43% 0);
+  --slice-5: inset(80% -6px 5% 0);
+
+  content: 'START';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient( transparent 3%, #837f01 3%, #384041 5%, #070e06 5%);
+  text-shadow: -3px -3px 0px #8f8a02, 3px 3px 0px #F8F005;
+  clip-path: var(--slice-0);
+}
+
+.Button button:hover::after {
+  font-size: 3.5rem;
+  animation: 1s glitch;
+  animation-timing-function: steps(2, end);
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes glitch {
+  0% {
+    clip-path: var(--slice-1);
+    transform: translate(-1.5rem, -0.8rem);
+  }
+  10% {
+    clip-path: var(--slice-3);
+    transform: translate(0.8rem, 0.8rem);
+  }
+  20% {
+    clip-path: var(--slice-1);
+    transform: translate(-0.7rem, 0.7rem);
+  }
+  30% {
+    clip-path: var(--slice-3);
+    transform: translate(0, 0.3rem);
+  }
+  40% {
+    clip-path: var(--slice-2);
+    transform: translate(-0.3rem, 0);
+  }
+  50% {
+    clip-path: var(--slice-3);
+    transform: translate(0.3rem, 0);
+  }
+  60% {
+    clip-path: var(--slice-4);
+    transform: translate(0.3rem, 0.8rem);
+  }
+  70% {
+    clip-path: var(--slice-2);
+    transform: translate(-0.7rem, 0.7rem);
+  }
+  80% {
+    clip-path: var(--slice-5);
+    transform: translate(1.5rem, -0.7rem);
+  }
+  90% {
+    clip-path: var(--slice-1);
+    transform: translate(-0.8rem, 0);
+  }
+  100% {
+    clip-path: var(--slice-1);
+    transform: translate(0);
+  }
+}

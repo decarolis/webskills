@@ -1,0 +1,23 @@
+.Select select {
+  text-align: center;
+  width: 27rem;
+  height: 8rem;
+  margin: 2rem;
+  font-size: 2rem;
+  border-right: 10px solid #0f1c0c;
+  border-top: 4px solid #172a12;
+  border-left: 10px solid #0f1c0c;
+  border-bottom: 4px solid #172a12;
+  background: #000;
+  color: white;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.Select select:hover {
+  font-size: 2.5rem;
+}

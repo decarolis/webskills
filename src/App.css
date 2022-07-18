@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  color: #FFF;
+  font-size: 1.6rem;
+  background-image: url(./assets/background.jpeg);
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
 }
 
 

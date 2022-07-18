@@ -1,10 +1,14 @@
+import React from 'react';
+import Router from './router';
 import './App.css';
+
+// pages
 
 function App() {
   return (
-    <div className="App">
-      <h1>React</h1>
-    </div>
+    <main className="App">
+      <Router />
+    </main>
   );
 }
 
