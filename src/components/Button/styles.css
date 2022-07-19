@@ -3,13 +3,13 @@
   height: 8rem;
   font-size: 3rem;
   background: #000;
-  border-right: 10px solid #0f1c0c;
-  border-top: 1px solid #000;
-  border-left: 10px solid #0f1c0c;
-  border-bottom: 8px solid #172a12;
+  border-right: 2rem solid #142610;
+  border-top: 0.1rem solid #000;
+  border-left: 2rem solid #142610;
+  border-bottom: 1.3rem solid #23401b;
   color: #fff;
   text-transform: uppercase;
-  outline: transparent;
+  outline: #408722 solid 0.2rem;
   position: relative;
   cursor: pointer;
   transition: 1s;

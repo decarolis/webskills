@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-function Select({ options, handleOnChange, value }) {
+function Select({ ClassNotSelected, options, handleOnChange, value }) {
   return (
-    <div className="Select">
+    <div className={`Select ${ClassNotSelected}`}>
       <select onChange={handleOnChange} value={value}>
         {value === 'Select Level' ? <option>{value}</option> : ''}
         {options.map((option) => (

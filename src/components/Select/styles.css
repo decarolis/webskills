@@ -4,20 +4,44 @@
   height: 8rem;
   margin: 2rem;
   font-size: 2rem;
-  border-right: 10px solid #0f1c0c;
-  border-top: 4px solid #172a12;
-  border-left: 10px solid #0f1c0c;
-  border-bottom: 4px solid #172a12;
+  border-right: 2rem solid #142610;
+  border-top: 0.5rem solid #0f1c0c;
+  border-left: 2rem solid #142610;
+  border-bottom: 0.5rem solid #23401b;
   background: #000;
+  outline: #408722 solid 0.2rem;
   color: white;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  outline: none;
   cursor: pointer;
   transition: 1s;
 }
 
 .Select select:hover {
   font-size: 2.5rem;
+}
+
+.Not-selected {
+  animation: 100ms shake;
+  animation-direction: alternate;
+  animation-iteration-count: 3;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(0.8rem, 0.1rem);
+  }
+  66% {
+    clip-path: var(--slice-1);
+    transform: translate(-0.8rem, -0.1rem);
+  }
+  100% {
+    clip-path: var(--slice-3);
+    transform: translate(0, 0);
+  }
+
 }

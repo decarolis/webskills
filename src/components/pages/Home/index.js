@@ -1,6 +1,8 @@
 import React from 'react';
-import './styles.css';
 import { useNavigate } from 'react-router-dom';
+
+// css
+import './styles.css';
 
 // components
 import Select from '../../Select';
@@ -9,6 +11,7 @@ import Button from '../../Button';
 const Home = () => {
   const [levels] = React.useState(['Easy', 'Normal', 'Difficult', 'Linus']);
   const [level, setLevel] = React.useState('Select Level');
+  const [notSelected, setNotSelected] = React.useState('');
   const navigate = useNavigate();
 
   console.log(level);
@@ -19,6 +22,10 @@ const Home = () => {
 
   const handleStartGame = () => {
     if (level === 'Select Level') {
+      setNotSelected('Not-selected');
+      setTimeout(() => {
+        setNotSelected('');
+      }, 500);
       return;
     }
     navigate(`/game/${level}`);
@@ -27,7 +34,12 @@ const Home = () => {
   return (
     <div className="Home">
       <h1>Dev Skills</h1>
-      <Select value={level} options={levels} handleOnChange={handleLevel} />
+      <Select
+        ClassNotSelected={notSelected}
+        value={level}
+        options={levels}
+        handleOnChange={handleLevel}
+      />
       <Button handleOnCick={handleStartGame}>Start</Button>
     </div>
   );
