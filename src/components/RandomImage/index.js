@@ -31,7 +31,9 @@ const tecImages = [
 ];
 
 const RandomImage = () => {
-  const [tecImage] = React.useState(tecImages[Math.floor(Math.random() * 11)]);
+  const [tecImage, setTecImage] = React.useState(
+    tecImages[Math.floor(Math.random() * 11)]
+  );
   const [dimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -41,7 +43,6 @@ const RandomImage = () => {
     const size = Math.floor(Math.random() * (201 - 30)) + 30; // 30 - 100
     const baseY = ((200 - size) / 5) * (dimensions.height / 100);
     const baseX = ((200 - size) / 5) * (dimensions.width / 100);
-
     const top =
       (
         baseY +
@@ -58,19 +59,17 @@ const RandomImage = () => {
       ).toString() + 'px';
     const back = tecImage.back;
     const radius = tecImage.radius;
-    return (
-      console.log(top),
-      console.log(left),
-      {
-        position: 'absolute',
-        top: top,
-        left: left,
-        background: back,
-        borderRadius: radius,
-        fontSize: size,
-      }
-    );
+    return {
+      position: 'absolute',
+      top: top,
+      left: left,
+      background: back,
+      borderRadius: radius,
+      fontSize: size,
+    };
   };
+
+  console.log('oi image');
 
   return (
     <div>

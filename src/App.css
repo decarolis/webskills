@@ -8,5 +8,9 @@
   min-height: 100vh;
 }
 
-
+@media (max-width: 720px) {
+  .App {
+    background-image: url(./assets/img/background2.jpeg);
+  }
+}
 

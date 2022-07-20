@@ -28,7 +28,7 @@ const Home = () => {
       }, 500);
       return;
     }
-    navigate(`/game/${level}`);
+    navigate(`/game/${level.toLowerCase()}`);
   };
 
   return (

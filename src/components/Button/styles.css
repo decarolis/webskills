@@ -30,12 +30,12 @@
   content: 'START';
   display: block;
   position: absolute;
-  top: 0;
-  left: 0;
+  top: -10px;
+  left: -40px;
   right: 0;
-  bottom: 0;
-  background: linear-gradient( transparent 3%, #837f01 3%, #384041 5%, #070e06 5%);
-  text-shadow: -3px -3px 0px #8f8a02, 3px 3px 0px #F8F005;
+  bottom: -10px;
+  background: linear-gradient( transparent 3%, #F8F005 3%, #a9fb1d 5%, rgba(73, 125, 14, .2) 5%);
+  text-shadow: -6px -6px 0px #F8F005, 6px 6px 0px #F8F005;
   clip-path: var(--slice-0);
 }
 
@@ -43,50 +43,50 @@
   font-size: 3.5rem;
   animation: 1s glitch;
   animation-timing-function: steps(2, end);
-  animation-direction: alternate;
+  animation-direction: alternate-reverse;
   animation-iteration-count: infinite;
 }
 
 @keyframes glitch {
   0% {
     clip-path: var(--slice-1);
-    transform: translate(-1.5rem, -0.8rem);
+    transform: translate(-20px, -10px);
   }
   10% {
     clip-path: var(--slice-3);
-    transform: translate(0.8rem, 0.8rem);
+    transform: translate(10px, 10px);
   }
   20% {
     clip-path: var(--slice-1);
-    transform: translate(-0.7rem, 0.7rem);
+    transform: translate(-10px, 10px);
   }
   30% {
     clip-path: var(--slice-3);
-    transform: translate(0, 0.3rem);
+    transform: translate(0px, 5px);
   }
   40% {
     clip-path: var(--slice-2);
-    transform: translate(-0.3rem, 0);
+    transform: translate(-5px, 0px);
   }
   50% {
     clip-path: var(--slice-3);
-    transform: translate(0.3rem, 0);
+    transform: translate(5px, 0px);
   }
   60% {
     clip-path: var(--slice-4);
-    transform: translate(0.3rem, 0.8rem);
+    transform: translate(5px, 10px);
   }
   70% {
     clip-path: var(--slice-2);
-    transform: translate(-0.7rem, 0.7rem);
+    transform: translate(-10px, 10px);
   }
   80% {
     clip-path: var(--slice-5);
-    transform: translate(1.5rem, -0.7rem);
+    transform: translate(20px, -10px);
   }
   90% {
     clip-path: var(--slice-1);
-    transform: translate(-0.8rem, 0);
+    transform: translate(-10px, 0px);
   }
   100% {
     clip-path: var(--slice-1);
