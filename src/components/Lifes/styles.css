@@ -1,0 +1,8 @@
+.Lifes {
+  text-align: end;
+}
+
+.Lifes > * {
+  margin: 0 0.5rem;
+}
+

@@ -1,0 +1,7 @@
+.TecIcons {
+  text-align: left;
+}
+
+.TecIcons > * {
+  margin: 0 0.5rem;
+}

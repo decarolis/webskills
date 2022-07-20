@@ -4,6 +4,8 @@ import React from 'react';
 // pages
 import Home from '../components/pages/Home';
 import Game from '../components/pages/Game';
+import Victory from '../components/pages/Victory';
+import GameOver from '../components/pages/GameOver';
 
 const Router = () => {
   return (
@@ -11,6 +13,8 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/game/:level" element={<Game />} />
+        <Route path="/victory" element={<Victory />} />
+        <Route path="/gameover" element={<GameOver />} />
       </Routes>
     </BrowserRouter>
   );

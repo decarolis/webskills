@@ -4,14 +4,15 @@
 }
 
 .Info-game {
-  padding: 1rem;
+  padding: 1.2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgba(0, 0, 0, .7);
 }
 
-.Logo, .Heart-div, .Counter {
-  flex: 1 1 20rem;
+.Info-game > * {
+  flex: 1 1 33.3%;
 }
 
 .Logo {
