@@ -1,6 +1,16 @@
 .Game {
   height: 100vh;
   font-size: 3rem;
+  cursor: url('../../../assets/img/brain.png') 53 64, auto;
+}
+
+.Game:active {
+  cursor: url('../../../assets/img/brainred.png') 53 64, auto;
+}
+
+
+.Tec-image:active {
+  cursor:  url('../../../assets/img/braingreen.png') 53 64, auto;
 }
 
 .Info-game {

@@ -9,7 +9,12 @@ import Select from '../../Select';
 import Button from '../../Button';
 
 const Home = () => {
-  const [levels] = React.useState(['Easy', 'Normal', 'Difficult', 'Linus']);
+  const [levels] = React.useState([
+    `I'm a Recruiter`,
+    'Easy',
+    'Normal',
+    'Linus Torvalds',
+  ]);
   const [level, setLevel] = React.useState('Select Level');
   const [notSelected, setNotSelected] = React.useState('');
   const navigate = useNavigate();
@@ -28,7 +33,7 @@ const Home = () => {
       }, 500);
       return;
     }
-    navigate(`/game/${level.toLowerCase()}`);
+    navigate(`/game/${level.split(' ').pop().toLocaleLowerCase()}`);
   };
 
   return (

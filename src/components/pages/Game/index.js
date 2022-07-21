@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { TiHtml5 } from 'react-icons/ti';
 import {
@@ -23,13 +23,13 @@ import './styles.css';
 
 const tecImages = [
   { name: TiHtml5, color: '#000000', back: '#CC341D', radius: '5%' },
-  { name: SiCss3, color: '#1752a2', back: '', radius: '' },
+  { name: SiCss3, color: '#1752a2', back: '', radius: '5%' },
   { name: SiGit, color: '#DA3726', back: '', radius: '' },
   { name: TbBrandJavascript, color: '#000000', back: '#E5CE18', radius: '5%' },
   { name: SiSass, color: '#B3487E', back: '', radius: '' },
-  { name: SiNodedotjs, color: '#AB0024', back: '', radius: '' },
+  { name: SiNodedotjs, color: '#ffffff', back: '#66A731', radius: '50%' },
   { name: SiMysql, color: '#16374F', back: '#CC5A21', radius: '5%' },
-  { name: SiMongodb, color: '#ffffff', back: '#000000', radius: '5%' },
+  { name: SiMongodb, color: '#1CE04D', back: '#000000', radius: '50%' },
   { name: SiReact, color: '#4EC4E9', back: '', radius: '' },
   { name: SiTypescript, color: '#265BAD', back: '', radius: '' },
 ];
@@ -41,25 +41,30 @@ const sequence = [
 
 const Game = () => {
   const { level } = useParams();
-  const [intervalLevel] = React.useState(
-    level === 'linus'
-      ? 500
+  const [intervalLevel] = useState(
+    level === `recruiter`
+      ? 2000
       : level === 'difficult'
-      ? 900
-      : level === 'normal'
-      ? 1200
-      : 1500
+      ? 1000
+      : level === 'easy'
+      ? 1300
+      : 700
   );
-  const [counter, setCounter] = React.useState(0);
-  const [tecImage, setTecImage] = React.useState(tecImages[sequence[counter]]);
-  const [dimensions, setDimensions] = React.useState({
+  const [counter, setCounter] = useState(0);
+  const [tecImage, setTecImage] = useState(
+    level === 'recruiter'
+      ? tecImages[sequence[counter]]
+      : tecImages[Math.floor(Math.random() * 10)]
+  );
+  const [dimensions, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
-  const [lifesQt, setLifesQt] = useState(3);
+  const [lifesQt, setLifesQt] = useState(100);
+  const [tecIconProps, setTecIconProps] = useState({});
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     // 37
     if (counter === sequence.length) {
       navigate('/victory');
@@ -69,7 +74,7 @@ const Game = () => {
     }
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     function handleResize() {
       setDimensions({
         height: window.innerHeight,
@@ -82,9 +87,10 @@ const Game = () => {
     };
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (level === 'recruiter') return;
     const interval = setInterval(() => {
-      setTecImage(tecImages[sequence[counter]]);
+      setTecImage(tecImages[Math.floor(Math.random() * 10)]);
       setCounter(counter + 1);
       setLifesQt(lifesQt - 1);
     }, intervalLevel);
@@ -122,23 +128,36 @@ const Game = () => {
   };
 
   const HandlePoints = () => {
+    setTecIconProps({
+      name: tecImage.name.name,
+      style: {
+        color: tecImage.color,
+        background: tecImage.back,
+        borderRadius: tecImage.radius,
+        fontSize: '4rem',
+      },
+    });
     let interval;
     setCounter(counter + 1);
-    setTecImage(tecImages[sequence[counter]]);
+    setTecImage(
+      level === 'recruiter'
+        ? tecImages[sequence[counter]]
+        : tecImages[Math.floor(Math.random() * 10)]
+    );
     clearInterval(interval);
   };
 
   return (
     <div className="Game">
       <header className="Info-game">
-        <p>{counter}</p>
-        <TecIcons />
+        <TecIcons iconProps={tecIconProps} />
         <Link to={'/'} className="Logo">
           Dev Skills
         </Link>
         <Lifes quantity={lifesQt} />
       </header>
       <tecImage.name
+        className="Tec-image"
         onClick={HandlePoints}
         style={createStyledComponent()}
         color={tecImage.color}
