@@ -15,44 +15,159 @@ import { TbBrandJavascript } from 'react-icons/tb';
 // css
 import './styles.css';
 
-const TecIcons = ({ iconProps }) => {
-  const [iconName, setIconName] = React.useState([]);
+const TecIcons = ({ iconProps, recruiter, bonus }) => {
+  const [iconOccurrence, setIconOccurrence] = React.useState([]);
+  const [iconRecruiterCase, setIconRecruiterCase] = React.useState({});
   const [iconStyle, setIconStyle] = React.useState({});
-
-  console.log(iconName);
 
   React.useEffect(() => {
     if (iconProps.name) {
-      setIconName((prev) => [...prev, iconProps.name]);
+      setIconOccurrence((prev) => [...prev, iconProps.name]);
+      setIconRecruiterCase((prev) => ({
+        ...prev,
+        [iconProps.name]: iconProps.recruiterCase,
+      }));
       setIconStyle((prev) => ({ ...prev, [iconProps.name]: iconProps.style }));
     }
   }, [iconProps]);
 
+  const getOccurrence = (icon, recruiterValue) => {
+    let count = 0;
+    iconOccurrence.forEach((v) => v === icon && count++);
+    if (recruiter && count === recruiterValue) return true;
+    return count >= 5; //nao pode ser menor 5
+  };
+
+  // React.useEffect(() => {
+  //   if (recruiter) {
+  //     if (getOccurrence(iconProps.name, iconProps.recruiterCase)) {
+  //       bonus(5);
+  //     } else {
+  //       bonus(0);
+  //     }
+  //   }
+  //   if (getOccurrence(iconProps.name)) {
+  //     bonus(5);
+  //   } else {
+  //     bonus(0);
+  //   }
+  // });
+
   return (
-    <div className="TecIcons">
-      <TiHtml5 style={iconName.includes('TiHtml5') ? iconStyle.TiHtml5 : ''} />
-      <SiCss3 style={iconName.includes('SiCss3') ? iconStyle.SiCss3 : ''} />
-      <SiGit style={iconName.includes('SiGit') ? iconStyle.SiGit : ''} />
-      <TbBrandJavascript
+    <>
+      <TiHtml5
+        className={
+          getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5) ? 'Tec-icon' : ''
+        }
         style={
-          iconName.includes('TbBrandJavascript')
+          getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5)
+            ? iconStyle.TiHtml5
+            : ''
+        }
+      />
+      <SiCss3
+        className={
+          getOccurrence('SiCss3', iconRecruiterCase.SiCss3) ? 'Tec-icon' : ''
+        }
+        style={
+          getOccurrence('SiCss3', iconRecruiterCase.SiCss3)
+            ? iconStyle.SiCss3
+            : ''
+        }
+      />
+      <SiGit
+        className={
+          getOccurrence('SiGit', iconRecruiterCase.SiGit) ? 'Tec-icon' : ''
+        }
+        style={
+          getOccurrence('SiGit', iconRecruiterCase.SiGit) ? iconStyle.SiGit : ''
+        }
+      />
+      <TbBrandJavascript
+        className={
+          getOccurrence(
+            'TbBrandJavascript',
+            iconRecruiterCase.TbBrandJavascript
+          )
+            ? 'Tec-icon'
+            : ''
+        }
+        style={
+          getOccurrence(
+            'TbBrandJavascript',
+            iconRecruiterCase.TbBrandJavascript
+          )
             ? iconStyle.TbBrandJavascript
             : ''
         }
       />
-      <SiSass style={iconName.includes('SiSass') ? iconStyle.SiSass : ''} />
+      <SiSass
+        className={
+          getOccurrence('SiSass', iconRecruiterCase.SiSass) ? 'Tec-icon' : ''
+        }
+        style={
+          getOccurrence('SiSass', iconRecruiterCase.SiSass)
+            ? iconStyle.SiSass
+            : ''
+        }
+      />
       <SiNodedotjs
-        style={iconName.includes('SiNodedotjs') ? iconStyle.SiNodedotjs : ''}
+        className={
+          getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)
+            ? 'Tec-icon'
+            : ''
+        }
+        style={
+          getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)
+            ? iconStyle.SiNodedotjs
+            : ''
+        }
       />
-      <SiMysql style={iconName.includes('SiMysql') ? iconStyle.SiMysql : ''} />
+      <SiMysql
+        className={
+          getOccurrence('SiMysql', iconRecruiterCase.SiMysql) ? 'Tec-icon' : ''
+        }
+        style={
+          getOccurrence('SiMysql', iconRecruiterCase.SiMysql)
+            ? iconStyle.SiMysql
+            : ''
+        }
+      />
       <SiMongodb
-        style={iconName.includes('SiMongodb') ? iconStyle.SiMongodb : ''}
+        className={
+          getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)
+            ? 'Tec-icon'
+            : ''
+        }
+        style={
+          getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)
+            ? iconStyle.SiMongodb
+            : ''
+        }
       />
-      <SiReact style={iconName.includes('SiReact') ? iconStyle.SiReact : ''} />
+      <SiReact
+        className={
+          getOccurrence('SiReact', iconRecruiterCase.SiReact) ? 'Tec-icon' : ''
+        }
+        style={
+          getOccurrence('SiReact', iconRecruiterCase.SiReact)
+            ? iconStyle.SiReact
+            : ''
+        }
+      />
       <SiTypescript
-        style={iconName.includes('SiTypescript') ? iconStyle.SiTypescript : ''}
+        className={
+          getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript)
+            ? 'Tec-icon'
+            : ''
+        }
+        style={
+          getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript)
+            ? iconStyle.SiTypescript
+            : ''
+        }
       />
-    </div>
+    </>
   );
 };
 

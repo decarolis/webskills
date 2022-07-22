@@ -13,16 +13,54 @@
   cursor:  url('../../../assets/img/braingreen.png') 53 64, auto;
 }
 
-.Info-game {
-  padding: 1.2rem;
+.Info-bar-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: #000000;
+  height: 7rem;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, .7);
 }
 
-.Info-game > * {
-  flex: 1 1 33.3%;
+.Back-screen {
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  pointer-events: none;
+  vertical-align: bottom;
+}
+.Back-screen > * {
+  position: relative;
+  top: 0;
+  opacity: 0;
+}
+
+.Bonus {
+  color: gold;
+  top: 5rem !important;
+  font-size: 8rem !important;
+  opacity: .6 !important;
+  transform: rotate(720deg);
+  transition: top .5s ease-out, transform .5s ease-out, opacity .3s linear;
+}
+
+.Point-bonus {
+  color: goldenrod;
+}
+
+.Info-bar-bottom {
+  background-color: #000000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 7rem;
 }
 
 .Logo {

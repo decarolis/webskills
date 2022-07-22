@@ -1,7 +1,10 @@
-.TecIcons {
-  text-align: left;
+.Tec-icon {
+  margin: 0 1rem;
+  top: 92.5vh !important;
+  font-size: 5rem !important;
+  opacity: 1 !important;
+  transform: rotate(720deg);
+  transition: top 1.2s ease-out, margin 1.2s ease-in-out, transform 1.2s ease-out, opacity .6s linear;
 }
 
-.TecIcons > * {
-  margin: 0 0.5rem;
-}
+
