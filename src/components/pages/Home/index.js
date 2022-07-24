@@ -12,7 +12,7 @@ const Home = () => {
   const [levels] = React.useState([
     `I'm a Recruiter`,
     'Easy',
-    'Normal',
+    'difficult',
     'Linus Torvalds',
   ]);
   const [level, setLevel] = React.useState('Select Level');

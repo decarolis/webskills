@@ -7,6 +7,8 @@ import './styles.css';
 const Lifes = ({ quantity }) => {
   return (
     <div className="Lifes">
+      <BsFillSuitHeartFill color={quantity > 4 ? '#b60c0c' : '#000000'} />
+      <BsFillSuitHeartFill color={quantity > 3 ? '#b60c0c' : '#000000'} />
       <BsFillSuitHeartFill color={quantity > 2 ? '#b60c0c' : '#000000'} />
       <BsFillSuitHeartFill color={quantity > 1 ? '#b60c0c' : '#000000'} />
       <BsFillSuitHeartFill color={quantity > 0 ? '#b60c0c' : '#000000'} />

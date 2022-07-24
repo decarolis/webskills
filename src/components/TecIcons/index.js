@@ -15,7 +15,7 @@ import { TbBrandJavascript } from 'react-icons/tb';
 // css
 import './styles.css';
 
-const TecIcons = ({ iconProps, recruiter, bonus }) => {
+const TecIcons = ({ iconProps, recruiter }) => {
   const [iconOccurrence, setIconOccurrence] = React.useState([]);
   const [iconRecruiterCase, setIconRecruiterCase] = React.useState({});
   const [iconStyle, setIconStyle] = React.useState({});
@@ -34,8 +34,22 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
   const getOccurrence = (icon, recruiterValue) => {
     let count = 0;
     iconOccurrence.forEach((v) => v === icon && count++);
-    if (recruiter && count === recruiterValue) return true;
-    return count >= 5; //nao pode ser menor 5
+    if (recruiter) {
+      if (count === recruiterValue) return 'Tec-icon';
+      return '';
+    } else if (count >= 3 && count % 3 === 0) {
+      return 'Tec-icon';
+    } else if (count >= 3 && count % 3 === 1) {
+      return 'Tec-icon';
+    } else if (count >= 3 && count % 3 === 2) {
+      return '';
+    } else {
+      return false;
+    }
+
+    // {
+    //   return count >= 3 && count % 3 === 0 && count % 3 === 1;
+    // }
   };
 
   // React.useEffect(() => {
@@ -57,18 +71,24 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
     <>
       <TiHtml5
         className={
-          getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5) ? 'Tec-icon' : ''
+          !getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5) && 'Tec-icon2'
         }
+      />
+      <TiHtml5
+        className={getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5)}
         style={
           getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5)
             ? iconStyle.TiHtml5
             : ''
         }
-      />
+      ></TiHtml5>
       <SiCss3
         className={
-          getOccurrence('SiCss3', iconRecruiterCase.SiCss3) ? 'Tec-icon' : ''
+          !getOccurrence('SiCss3', iconRecruiterCase.SiCss3) && 'Tec-icon2'
         }
+      />
+      <SiCss3
+        className={getOccurrence('SiCss3', iconRecruiterCase.SiCss3)}
         style={
           getOccurrence('SiCss3', iconRecruiterCase.SiCss3)
             ? iconStyle.SiCss3
@@ -77,21 +97,28 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiGit
         className={
-          getOccurrence('SiGit', iconRecruiterCase.SiGit) ? 'Tec-icon' : ''
+          !getOccurrence('SiGit', iconRecruiterCase.SiGit) && 'Tec-icon2'
         }
+      />
+      <SiGit
+        className={getOccurrence('SiGit', iconRecruiterCase.SiGit)}
         style={
           getOccurrence('SiGit', iconRecruiterCase.SiGit) ? iconStyle.SiGit : ''
         }
       />
       <TbBrandJavascript
         className={
-          getOccurrence(
+          !getOccurrence(
             'TbBrandJavascript',
             iconRecruiterCase.TbBrandJavascript
-          )
-            ? 'Tec-icon'
-            : ''
+          ) && 'Tec-icon2'
         }
+      />
+      <TbBrandJavascript
+        className={getOccurrence(
+          'TbBrandJavascript',
+          iconRecruiterCase.TbBrandJavascript
+        )}
         style={
           getOccurrence(
             'TbBrandJavascript',
@@ -103,8 +130,11 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiSass
         className={
-          getOccurrence('SiSass', iconRecruiterCase.SiSass) ? 'Tec-icon' : ''
+          !getOccurrence('SiSass', iconRecruiterCase.SiSass) && 'Tec-icon2'
         }
+      />
+      <SiSass
+        className={getOccurrence('SiSass', iconRecruiterCase.SiSass)}
         style={
           getOccurrence('SiSass', iconRecruiterCase.SiSass)
             ? iconStyle.SiSass
@@ -113,10 +143,12 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiNodedotjs
         className={
-          getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)
-            ? 'Tec-icon'
-            : ''
+          !getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs) &&
+          'Tec-icon2'
         }
+      />
+      <SiNodedotjs
+        className={getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)}
         style={
           getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)
             ? iconStyle.SiNodedotjs
@@ -125,8 +157,11 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiMysql
         className={
-          getOccurrence('SiMysql', iconRecruiterCase.SiMysql) ? 'Tec-icon' : ''
+          !getOccurrence('SiMysql', iconRecruiterCase.SiMysql) && 'Tec-icon2'
         }
+      />
+      <SiMysql
+        className={getOccurrence('SiMysql', iconRecruiterCase.SiMysql)}
         style={
           getOccurrence('SiMysql', iconRecruiterCase.SiMysql)
             ? iconStyle.SiMysql
@@ -135,10 +170,12 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiMongodb
         className={
-          getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)
-            ? 'Tec-icon'
-            : ''
+          !getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb) &&
+          'Tec-icon2'
         }
+      />
+      <SiMongodb
+        className={getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)}
         style={
           getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)
             ? iconStyle.SiMongodb
@@ -147,8 +184,11 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiReact
         className={
-          getOccurrence('SiReact', iconRecruiterCase.SiReact) ? 'Tec-icon' : ''
+          !getOccurrence('SiReact', iconRecruiterCase.SiReact) && 'Tec-icon2'
         }
+      />
+      <SiReact
+        className={getOccurrence('SiReact', iconRecruiterCase.SiReact)}
         style={
           getOccurrence('SiReact', iconRecruiterCase.SiReact)
             ? iconStyle.SiReact
@@ -157,10 +197,15 @@ const TecIcons = ({ iconProps, recruiter, bonus }) => {
       />
       <SiTypescript
         className={
-          getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript)
-            ? 'Tec-icon'
-            : ''
+          !getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript) &&
+          'Tec-icon2'
         }
+      />
+      <SiTypescript
+        className={getOccurrence(
+          'SiTypescript',
+          iconRecruiterCase.SiTypescript
+        )}
         style={
           getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript)
             ? iconStyle.SiTypescript

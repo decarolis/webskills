@@ -1,6 +1,6 @@
 .Game {
-  height: 100vh;
   font-size: 3rem;
+  height: 100vh;
   cursor: url('../../../assets/img/brain.png') 53 64, auto;
 }
 
@@ -19,7 +19,7 @@
   width: 100%;
   z-index: 1;
   background-color: #000000;
-  height: 7rem;
+  height: 70px;
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
@@ -37,6 +37,7 @@
   vertical-align: bottom;
 }
 .Back-screen > * {
+  font-size: 0;
   position: relative;
   top: 0;
   opacity: 0;
@@ -48,7 +49,16 @@
   font-size: 8rem !important;
   opacity: .6 !important;
   transform: rotate(720deg);
-  transition: top .5s ease-out, transform .5s ease-out, opacity .3s linear;
+  transition: top .5s ease-out, transform .5s ease-out;
+}
+
+.Bonus2 {
+  color: gold;
+  top: 5rem !important;
+  font-size: 8rem !important;
+  opacity: .6 !important;
+  transform: rotate(-720deg);
+  transition: top .5s ease-out, transform .5s ease-out;
 }
 
 .Point-bonus {
@@ -60,7 +70,7 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 7rem;
+  height: 70px;
 }
 
 .Logo {
@@ -76,4 +86,21 @@
     0 0 151px #0fa;
 }
 
+@media (max-width: 600px) {
+  .Logo {
+    display: none;
+  }
+}
 
+@media (max-width: 450px) {
+  .Info-bar-bottom {
+    height: 110px;
+  }
+}
+
+@media (max-width: 400px) {
+  .Info-bar-top {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}

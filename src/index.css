@@ -1,13 +1,12 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: Helvetica;
+  font-family: 'Roboto Mono', monospace;
   box-sizing: border-box;
 }
 
 html {
   font-size: 62.5%;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -16,14 +15,21 @@ body {
 
 h1 {
   font-size: 6rem;
+  font-weight: bold;
 }
 
 h2 {
   font-size: 5rem;
+  font-weight: bold;
 }
 
 h3 {
   font-size: 4rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 @media (max-width: 1080px) {

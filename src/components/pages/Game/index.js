@@ -28,23 +28,47 @@ const tecImages = [
     back: '#CC341D',
     radius: '5%',
     recruiter: 2,
+    bonus: 5,
   },
-  { name: SiCss3, color: '#1752a2', back: '', radius: '5%', recruiter: 3 },
-  { name: SiGit, color: '#DA3726', back: '', radius: '', recruiter: 3 },
+  {
+    name: SiCss3,
+    color: '#1752a2',
+    back: '',
+    radius: '5%',
+    recruiter: 3,
+    bonus: 10,
+  },
+  {
+    name: SiGit,
+    color: '#DA3726',
+    back: '',
+    radius: '',
+    recruiter: 3,
+    bonus: 15,
+  },
   {
     name: TbBrandJavascript,
     color: '#000000',
     back: '#E5CE18',
     radius: '5%',
     recruiter: 5,
+    bonus: 150,
   },
-  { name: SiSass, color: '#B3487E', back: '', radius: '', recruiter: 2 },
+  {
+    name: SiSass,
+    color: '#B3487E',
+    back: '',
+    radius: '',
+    recruiter: 2,
+    bonus: 30,
+  },
   {
     name: SiNodedotjs,
     color: '#ffffff',
     back: '#66A731',
     radius: '50%',
     recruiter: 5,
+    bonus: 300,
   },
   {
     name: SiMysql,
@@ -52,6 +76,7 @@ const tecImages = [
     back: '#CC5A21',
     radius: '5%',
     recruiter: 2,
+    bonus: 60,
   },
   {
     name: SiMongodb,
@@ -59,9 +84,24 @@ const tecImages = [
     back: '#000000',
     radius: '50%',
     recruiter: 2,
+    bonus: 70,
   },
-  { name: SiReact, color: '#4EC4E9', back: '', radius: '', recruiter: 5 },
-  { name: SiTypescript, color: '#265BAD', back: '', radius: '', recruiter: 2 },
+  {
+    name: SiReact,
+    color: '#4EC4E9',
+    back: '',
+    radius: '',
+    recruiter: 5,
+    bonus: 200,
+  },
+  {
+    name: SiTypescript,
+    color: '#265BAD',
+    back: '',
+    radius: '',
+    recruiter: 2,
+    bonus: 400,
+  },
 ];
 
 const sequence = [
@@ -93,13 +133,13 @@ const Game = () => {
     height: window.innerHeight,
     width: window.innerWidth,
   });
-  const [lifesQt, setLifesQt] = useState(3);
+  const [lifesQt, setLifesQt] = useState(5);
   const [tecIconProps, setTecIconProps] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     // 37
-    if (counter === sequence.length + 1) {
+    if (level === 'recruiter' && counter === sequence.lengthn + 1) {
       navigate('/victory');
     }
     if (lifesQt === 0) {
@@ -121,7 +161,7 @@ const Game = () => {
   });
 
   useEffect(() => {
-    if (level === 'recruiter') return;
+    if (level === 'recruiter' || level === 'easy') return; // || level === 'easy'
     const interval = setInterval(() => {
       setTecImage(tecImages[Math.floor(Math.random() * 10)]);
       setCounter(counter + 1);
@@ -162,17 +202,19 @@ const Game = () => {
 
   const handlePoints = () => {
     setImageOccurrence((prev) => [...prev, tecImage]);
-    console.log(imageOccurrence);
     const getOccurrence = () => {
       let count = 0;
       count++; // this time
       imageOccurrence.forEach((v) => v === tecImage && count++);
-      if (level === 'recruiter' && count === tecImage.recruiter) return true;
-      return count >= 5; //cant be less than max of recruiter mode
+      if (level === 'recruiter') {
+        return count === tecImage.recruiter;
+      } else {
+        return count >= 3 && count % 3 === 0;
+      }
     };
     if (getOccurrence()) {
-      setBonus(5);
-      setPoints(points + 5 + 1);
+      setBonus(tecImage.bonus);
+      setPoints(points + tecImage.bonus);
     } else {
       setBonus(0);
       setPoints(points + 1);
@@ -196,13 +238,11 @@ const Game = () => {
     clearInterval(interval);
   };
 
-  console.log(bonus);
-
   return (
     <div className="Game">
       <header className="Info-bar-top">
         <Link to={'/'} className="Logo">
-          Dev Skills
+          <p>Dev Skills</p>
         </Link>
         <p className={bonus && 'Point-bonus'}>{points}</p>
         <Lifes quantity={lifesQt} />
@@ -220,7 +260,12 @@ const Game = () => {
           iconProps={tecIconProps}
           recruiter={level === 'recruiter'}
         />
-        <p className={bonus && 'Bonus'}>{`${bonus}+`}</p>
+        <p
+          className={counter % 2 === 0 && bonus > 0 ? 'Bonus' : ''}
+        >{`${bonus}+`}</p>
+        <p
+          className={counter % 2 === 1 && bonus > 0 ? 'Bonus2' : ''}
+        >{`${bonus}+`}</p>
       </div>
     </div>
   );

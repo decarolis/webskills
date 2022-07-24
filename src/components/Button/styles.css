@@ -1,14 +1,13 @@
 .Button button, .Button button::after {
   width: 27rem;
   height: 8rem;
-  font-size: 3rem;
+  font-size: 2rem;
   background: #000;
   border-right: 2rem solid #142610;
   border-top: 0.1rem solid #000;
   border-left: 2rem solid #142610;
   border-bottom: 1.3rem solid #23401b;
   color: #fff;
-  text-transform: uppercase;
   outline: #408722 solid 0.2rem;
   position: relative;
   cursor: pointer;
@@ -27,7 +26,7 @@
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'START';
+  content: 'Start';
   display: block;
   position: absolute;
   top: -10px;
