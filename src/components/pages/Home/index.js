@@ -33,7 +33,7 @@ const Home = () => {
       }, 500);
       return;
     }
-    navigate(`/game/${level.split(' ').pop().toLocaleLowerCase()}`);
+    navigate(`/${level.split(' ').pop().toLocaleLowerCase()}`);
   };
 
   return (
