@@ -1,4 +1,29 @@
-.Button button, .Button button::after {
+.Recruiter-msg {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: #000;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  cursor: default;
+}
+
+.Recruiter-msg p {
+  line-height: 1.8;
+}
+
+.Recruiter-msg a {
+  color: #999999;
+}
+
+.Recruiter-msg a:hover {
+  color: #215fb5;
+}
+
+.Recruiter-msg button, .Recruiter-msg button::after {
   width: 27rem;
   height: 8rem;
   font-size: 2rem;
@@ -14,11 +39,11 @@
   transition: 1s;
 }
 
-.Button button:hover {
+.Recruiter-msg button:hover {
   font-size: 3.5rem;
 }
 
-.Button button::after {
+.Recruiter-msg button::after {
   --slice-0: inset(50% 50% 50% 50%);
   --slice-1: inset(80% -6px 0 0);
   --slice-2: inset(50% -6px 30% 0);
@@ -26,7 +51,6 @@
   --slice-4: inset(40% -6px 43% 0);
   --slice-5: inset(80% -6px 5% 0);
 
-  content: 'Start';
   display: block;
   position: absolute;
   top: -10px;
@@ -38,7 +62,14 @@
   clip-path: var(--slice-0);
 }
 
-.Button button:hover::after {
+.Button-home::after {
+  content: 'Home';
+}
+.Button-ok::after {
+  content: 'Ok';
+}
+
+.Recruiter-msg button:hover::after {
   font-size: 3.5rem;
   animation: 1s glitch;
   animation-timing-function: steps(2, end);

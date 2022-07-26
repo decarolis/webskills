@@ -11,7 +11,7 @@
   margin: 0 1rem;
   top: calc(100vh - 7rem) !important;
   font-size: 5rem !important;
-  opacity: .1 !important;
+  opacity: .2 !important;
   transform: none;
   transition: transform 1.2s ease-out, opacity .6s linear;
 }

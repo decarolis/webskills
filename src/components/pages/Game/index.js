@@ -50,6 +50,8 @@ import ts3 from '../../../assets/img/ts3.png';
 // components
 import Lifes from '../../Lifes';
 import TecIcons from '../../TecIcons';
+import RecruiterMsg from '../../RecruiterMsg';
+import Records from '../../Records';
 
 // css
 import './styles.css';
@@ -164,6 +166,11 @@ const Game = () => {
       : 700
   );
   const [counter, setCounter] = useState(0);
+  const [records, SetRecords] = useState(false);
+  const [endMsg, setEndMsg] = useState(false);
+  const [recruiterMsg, setRecruiterMsg] = useState(
+    level === 'recruiter' ? true : false
+  );
   const [counterImg, setCounterImg] = useState(2);
   const [points, setPoints] = useState(0);
   const [bonus, setBonus] = useState(0);
@@ -177,21 +184,22 @@ const Game = () => {
     height: window.innerHeight,
     width: window.innerWidth,
   });
-  const [topImg, setTopImg] = useState();
-  const [leftImg, setLeftImg] = useState();
   const [lifesQt, setLifesQt] = useState(5);
   const [tecIconProps, setTecIconProps] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     // 37
-    if (level === 'recruiter' && counter === sequence.lengthn + 1) {
-      navigate('/profile');
+    if (level === 'recruiter' && counter === sequence.length) {
+      setEndMsg(true);
+      setTimeout(() => {
+        setBonus('');
+      }, 1000);
     }
     if (lifesQt === 0) {
-      navigate('/records');
+      SetRecords(true);
     }
-  });
+  }, [counter, level, lifesQt]);
 
   useEffect(() => {
     function handleResize() {
@@ -236,6 +244,7 @@ const Game = () => {
     if (level === 'recruiter') return; // || level === 'easy'
     const interval = setInterval(() => {
       setTecImage(tecImages[Math.floor(Math.random() * 10)]);
+      setBonus(0);
       setCounter(counter + 1);
       setLifesQt(lifesQt - 1);
     }, intervalLevel);
@@ -311,6 +320,10 @@ const Game = () => {
     clearInterval(interval);
   };
 
+  const handleRecruiterMsg = () => {
+    setRecruiterMsg(false);
+  };
+
   return (
     <div className="Game">
       <header className="Info-bar-top">
@@ -320,15 +333,66 @@ const Game = () => {
         <p className={bonus && 'Point-bonus'}>{points}</p>
         <Lifes quantity={lifesQt} />
       </header>
-      <div style={updateDivImg()} className="Back-img">
-        <img src={tecImage.img[counterImg]} alt="snippet of code" />
-      </div>
-      <tecImage.name
-        className="Tec-image"
-        onClick={handlePoints}
-        style={createStyledComponent()}
-        color={tecImage.color}
-      />
+      {recruiterMsg && (
+        <div style={updateDivImg()} className="Back-img">
+          <RecruiterMsg welcome={true} welcomeFunc={handleRecruiterMsg}>
+            <p>
+              Hi Recruiter! Be welcome. My name is André De Carolis and this
+              level was developed by me to show in a playful way my journey of
+              studies in the universe of web development. Hope you like.
+            </p>
+          </RecruiterMsg>
+        </div>
+      )}
+      {endMsg && (
+        <div style={updateDivImg()} className="Back-img">
+          <RecruiterMsg welcome={false} displayClass={{ display: 'block' }}>
+            <p>Thank you very much for your time!</p>
+            <p>
+              If you want to know more about me, visit my profile on{' '}
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://github.com/decarolis"
+              >
+                GitHub
+              </a>{' '}
+              or{' '}
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.linkedin.com/in/andr%C3%A9-hungria-machado-de-carolis-adc/"
+              >
+                Linkedin
+              </a>
+              .
+            </p>
+            <p>
+              To really play the game, just go back to home and choose one of
+              the other levels.
+            </p>
+          </RecruiterMsg>
+        </div>
+      )}
+
+      {records && (
+        <div style={updateDivImg()} className="Back-img">
+          <Records />
+        </div>
+      )}
+      {!recruiterMsg && !endMsg && !records && (
+        <div style={updateDivImg()} className="Back-img">
+          <img src={tecImage.img[counterImg]} alt="snippet of code" />
+        </div>
+      )}
+      {!recruiterMsg && !endMsg && !records && (
+        <tecImage.name
+          className="Tec-image"
+          onClick={handlePoints}
+          style={createStyledComponent()}
+          color={tecImage.color}
+        />
+      )}
       <div className="Info-bar-bottom"></div>
       <div className="Back-screen">
         <TecIcons

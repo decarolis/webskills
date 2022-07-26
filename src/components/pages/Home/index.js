@@ -12,14 +12,12 @@ const Home = () => {
   const [levels] = React.useState([
     `I'm a Recruiter`,
     'Easy',
-    'difficult',
+    'Difficult',
     'Linus Torvalds',
   ]);
   const [level, setLevel] = React.useState('Select Level');
   const [notSelected, setNotSelected] = React.useState('');
   const navigate = useNavigate();
-
-  console.log(level);
 
   const handleLevel = (e) => {
     setLevel(e.target.options[e.target.selectedIndex].text);
@@ -38,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <h1>Dev Skills</h1>
+      <h1>Web Skills</h1>
       <Select
         ClassNotSelected={notSelected}
         value={level}

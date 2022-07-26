@@ -27,6 +27,13 @@
   align-items: center;
 }
 
+.Info-bar-top p {
+  color: #21b524;
+}
+.Info-bar-top .Logo p {
+  color: #ffffff;
+}
+
 .Back-screen {
   background-color: rgba(0, 0, 0, 0);
   position: fixed;
@@ -108,6 +115,15 @@
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 720px) {
+  .Back-img {
+    border-right: 1.2rem solid #142610;
+    border-top: 2rem solid #23401b;
+    border-left: 1.2rem solid #142610;
+    border-bottom: 2rem solid #23401b;
+  }
 }
 
 @media (max-width: 600px) {
