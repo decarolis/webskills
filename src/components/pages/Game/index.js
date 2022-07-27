@@ -1,3 +1,7 @@
+/* this is my first application that comes 100% from my mind
+ (of course with some searches for the stack oveflow).
+ I wasn't so concerned with organizing the code or making comments,
+ but with the features and making everything work as I had imagined.*/
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { TiHtml5 } from 'react-icons/ti';
@@ -377,7 +381,7 @@ const Game = () => {
     <div className="Game">
       <header className="Info-bar-top">
         <Link to={'/'} className="Logo">
-          <p>Dev Skills</p>
+          <p>Web Skills</p>
         </Link>
         <p
           className={bonus[0] ? 'Point-bonus' : 'Point'}
