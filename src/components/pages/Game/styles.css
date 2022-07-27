@@ -20,6 +20,7 @@
   width: 100%;
   z-index: 1;
   background-color: #000000;
+  color: #21b524;
   height: 70px;
   padding: 0 2rem;
   display: flex;
@@ -27,9 +28,6 @@
   align-items: center;
 }
 
-.Info-bar-top p {
-  color: #21b524;
-}
 .Info-bar-top .Logo p {
   color: #ffffff;
 }
@@ -51,26 +49,41 @@
   opacity: 0;
 }
 
-.Bonus {
-  color: gold;
-  top: 5rem !important;
+.Bonus1 {
+  top: 1rem !important;
   font-size: 8rem !important;
-  opacity: .6 !important;
+  opacity: .8 !important;
   transform: rotate(720deg);
   transition: top .5s ease-out, transform .5s ease-out;
 }
 
 .Bonus2 {
-  color: gold;
-  top: 5rem !important;
+  top: 1rem !important;
   font-size: 8rem !important;
-  opacity: .6 !important;
+  opacity: .8 !important;
+  transform: rotate(-720deg);
+  transition: top .5s ease-out, transform .5s ease-out;
+}
+
+.Bonus3 {
+  top: 4rem !important;
+  font-size: 3rem !important;
+  opacity: .8 !important;
+  color: #ffffff;
   transform: rotate(-720deg);
   transition: top .5s ease-out, transform .5s ease-out;
 }
 
 .Point-bonus {
-  color: goldenrod;
+  transform: rotate(360deg);
+  font-size: 4rem;
+  transition: font-size .3s ease-in-out, transform .3s ease-out;
+}
+
+.Point {
+  transform: rotate(-360deg);
+  font-size: 3rem;
+  transition: font-size .3s ease-in-out, transform .3s ease-out;
 }
 
 .Info-bar-bottom {

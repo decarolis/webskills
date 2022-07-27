@@ -1,5 +1,12 @@
+.Records-cover {
+  background: #000;
+  width: 100%;
+  height: 100%;
+}
+
 .Records {
-  border: 1px solid red;
+  visibility: hidden;
+  opacity: .1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -10,16 +17,22 @@
   height: 100%;
   font-size: 1.5rem;
   cursor: default;
+  transition: visibility 1s ease-in-out, opacity 1s ease-in-out;
 }
 
 .Records p {
+  margin: 0;
   line-height: 1.8;
 }
 
-.Records input, .Records button {
+.Records form {
+  display: flex;
+}
+
+.Records-input, .Records-submit, .Records-home {
   padding: 0;
-  height: 8rem;
-  margin: 0;
+  height: 4rem;
+  margin: 1rem 0;
   font-size: 2rem;
   border-top: 0.5rem solid #0f1c0c;
   border-bottom: 0.5rem solid #23401b;
@@ -29,11 +42,9 @@
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
-  cursor: pointer;
-
 }
 
-.Records input {
+.Records-input {
   padding-left: 0.5rem;
   text-align: left;
   width: 70%;
@@ -41,35 +52,36 @@
   border-right: 1rem solid #142610;
 }
 
-.Records button {
+.Records-submit {
   text-align: center;
-  transition: 1s;
   width: 30%;
   border-right: 2rem solid #142610;
   border-left: none;
+  cursor: pointer;
+  transition: .5s;
 }
 
-.Records button:hover {
-  font-size: 2.5rem;
+.Records-home {
+  text-align: center;
+  width: 30%;
+  cursor: pointer;
+  transition: .5s;
+  border-left: 1rem solid #142610;
+  border-right: 1rem solid #142610;
 }
 
-.Records table {
-  font-family: 'Roboto Mono', monospace;;
-  font-size: inherit;
-  font-weight: inherit;
-  width: 80%;
+.Records-submit:hover, .Records-home:hover {
+  color: #000000;
+  background-color: #408722;
+  border-color: #408722;
 }
 
-.Td-left {
-  text-align: left;
+.Table {
+  width: 100%;
 }
 
-.Td-right {
-  text-align: right;
-}
-
-.Records tr:nth-child(even) {
-  background: #323232
+.T-caption {
+  background-color: #0f1c0c;
 }
 
 .T-left, .T-right {
@@ -78,10 +90,19 @@
 
 .T-left {
   text-align: left;
-  width: 50%;
+  width: 75%;
 }
 
 .T-right {
   text-align: right;
-  width: 50%;
+  width: 25%;
+}
+
+.T-name {
+  padding-left: .5rem;
+}
+
+.T-selected {
+  background: #408722;
+  color: #000000;
 }

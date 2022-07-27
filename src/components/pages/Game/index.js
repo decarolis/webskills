@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { TiHtml5 } from 'react-icons/ti';
 import {
   SiCss3,
@@ -63,7 +62,7 @@ const tecImages = [
     back: '#CC341D',
     radius: '5%',
     recruiter: 2,
-    bonus: 5,
+    bonus: [5, '+', '#CC341D'],
     img: [html1, html2, html3],
   },
   {
@@ -72,7 +71,7 @@ const tecImages = [
     back: '',
     radius: '5%',
     recruiter: 3,
-    bonus: 10,
+    bonus: [10, '+', '#1752a2'],
     img: [css1, css2, css3],
   },
   {
@@ -81,7 +80,7 @@ const tecImages = [
     back: '',
     radius: '',
     recruiter: 3,
-    bonus: 15,
+    bonus: [15, '+', '#DA3726'],
     img: [git1, git2, git3],
   },
   {
@@ -90,7 +89,7 @@ const tecImages = [
     back: '#E5CE18',
     radius: '5%',
     recruiter: 5,
-    bonus: 150,
+    bonus: [150, '+', '#E5CE18'],
     img: [js1, js2, js3],
   },
   {
@@ -99,7 +98,7 @@ const tecImages = [
     back: '',
     radius: '',
     recruiter: 2,
-    bonus: 30,
+    bonus: [30, '+', '#B3487E'],
     img: [sass1, sass2, sass3],
   },
   {
@@ -108,7 +107,7 @@ const tecImages = [
     back: '#66A731',
     radius: '5%',
     recruiter: 5,
-    bonus: 300,
+    bonus: [300, '+', '#66A731'],
     img: [node1, node2, node3],
   },
   {
@@ -117,7 +116,7 @@ const tecImages = [
     back: '#CC5A21',
     radius: '5%',
     recruiter: 2,
-    bonus: 60,
+    bonus: [60, '+', '#CC5A21'],
     img: [mysql1, mysql2, mysql3],
   },
   {
@@ -126,7 +125,7 @@ const tecImages = [
     back: '#000000',
     radius: '50%',
     recruiter: 2,
-    bonus: 70,
+    bonus: [70, '+', '#1CE04D'],
     img: [mongodb1, mongodb2, mongodb3],
   },
   {
@@ -135,7 +134,7 @@ const tecImages = [
     back: '',
     radius: '',
     recruiter: 5,
-    bonus: 200,
+    bonus: [200, '+', '#4EC4E9'],
     img: [react1, react2, react3],
   },
   {
@@ -144,19 +143,52 @@ const tecImages = [
     back: '',
     radius: '',
     recruiter: 2,
-    bonus: 400,
+    bonus: [400, '+', '#265BAD'],
     img: [ts1, ts2, ts3],
   },
 ];
 
-const sequence = [
+const recruiterSequence = [
   0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 6, 6, 7, 7, 8, 8, 8,
   8, 8, 9, 9, 9,
 ];
 
+const phrases = {
+  bad: [
+    'Not bad!',
+    'Keep working on it!',
+    'You can try again!',
+    'Feel what you need to feel and then let it go.',
+    'To ease the pain, erase the anger.',
+    "Don't give up!",
+    'Come on! You can do it again!',
+    'Stay strong!',
+  ],
+  good: [
+    "That's good!",
+    'Good work!',
+    'Keep on trying!',
+    'You are a fast learner.',
+    "I'm so proud of your effort.",
+    'Keep it up!',
+    'Keep up the good work.',
+    'Good job!',
+  ],
+  great: [
+    'I hope to be as good as you one day.',
+    'Your progress is truly inspiring.',
+    "You've got your brain in gear today.",
+    "That's the right way to do it.",
+    "That's really fantastic.",
+    'Your level of expertise is impressive.',
+    'You just keep getting better at this.',
+    "I'm never going to forget this.",
+  ],
+};
+
 const Game = () => {
   const { level } = useParams();
-  const [intervalLevel] = useState(
+  const [intervalLevel, setIntervalLevel] = useState(
     level === 'recruiter'
       ? 2000
       : level === 'difficult'
@@ -173,10 +205,10 @@ const Game = () => {
   );
   const [counterImg, setCounterImg] = useState(2);
   const [points, setPoints] = useState(0);
-  const [bonus, setBonus] = useState(0);
+  const [bonus, setBonus] = useState([0, '', '']);
   const [tecImage, setTecImage] = useState(
     level === 'recruiter'
-      ? tecImages[sequence[counter]]
+      ? tecImages[recruiterSequence[counter]]
       : tecImages[Math.floor(Math.random() * 10)]
   );
   const [imageOccurrence, setImageOccurrence] = React.useState([]);
@@ -186,17 +218,33 @@ const Game = () => {
   });
   const [lifesQt, setLifesQt] = useState(5);
   const [tecIconProps, setTecIconProps] = useState({});
-  const navigate = useNavigate();
 
   useEffect(() => {
     // 37
-    if (level === 'recruiter' && counter === sequence.length) {
+    if (level === 'recruiter' && counter === recruiterSequence.length) {
       setEndMsg(true);
+      setCounter(counter + 1);
       setTimeout(() => {
-        setBonus('');
-      }, 1000);
+        setBonus([1, phrases.great[Math.floor(Math.random() * 2)]], '#000000');
+      }, 1500);
     }
     if (lifesQt === 0) {
+      if (counter - 5 <= 5) {
+        setTimeout(() => {
+          setBonus([1, phrases.bad[Math.floor(Math.random() * 8)]], '#000000');
+        }, 1000);
+      } else if (counter - 5 <= 50) {
+        setTimeout(() => {
+          setBonus([1, phrases.good[Math.floor(Math.random() * 8)]], '#000000');
+        }, 1000);
+      } else {
+        setTimeout(() => {
+          setBonus(
+            [1, phrases.great[Math.floor(Math.random() * 8)]],
+            '#000000'
+          );
+        }, 1000);
+      }
       SetRecords(true);
     }
   }, [counter, level, lifesQt]);
@@ -241,10 +289,10 @@ const Game = () => {
   }
 
   useEffect(() => {
-    if (level === 'recruiter') return; // || level === 'easy'
+    if (level === 'recruiter' || bonus[0] === 1) return; // || level === 'easy'
     const interval = setInterval(() => {
       setTecImage(tecImages[Math.floor(Math.random() * 10)]);
-      setBonus(0);
+      setBonus([0, '', '']);
       setCounter(counter + 1);
       setLifesQt(lifesQt - 1);
     }, intervalLevel);
@@ -294,10 +342,10 @@ const Game = () => {
       }
     };
     if (getOccurrence()) {
-      setBonus(tecImage.bonus);
-      setPoints(points + tecImage.bonus);
+      setBonus([tecImage.bonus[0], tecImage.bonus[1], tecImage.bonus[2]]);
+      setPoints(points + tecImage.bonus[0]);
     } else {
-      setBonus(0);
+      setBonus([0, '', '']);
       setPoints(points + 1);
     }
     setCounterImg(counter % 3);
@@ -311,10 +359,11 @@ const Game = () => {
       },
     });
     let interval;
+    setIntervalLevel(Math.floor(intervalLevel * 0.99));
     setCounter(counter + 1);
     setTecImage(
       level === 'recruiter'
-        ? tecImages[sequence[counter]]
+        ? tecImages[recruiterSequence[counter]]
         : tecImages[Math.floor(Math.random() * 10)]
     );
     clearInterval(interval);
@@ -330,7 +379,12 @@ const Game = () => {
         <Link to={'/'} className="Logo">
           <p>Dev Skills</p>
         </Link>
-        <p className={bonus && 'Point-bonus'}>{points}</p>
+        <p
+          className={bonus[0] ? 'Point-bonus' : 'Point'}
+          style={bonus[0] ? { color: bonus[2] } : {}}
+        >
+          {points}
+        </p>
         <Lifes quantity={lifesQt} />
       </header>
       {recruiterMsg && (
@@ -339,7 +393,7 @@ const Game = () => {
             <p>
               Hi Recruiter! Be welcome. My name is André De Carolis and this
               level was developed by me to show in a playful way my journey of
-              studies in the universe of web development. Hope you like.
+              studies into the universe of web development. Hope you like.
             </p>
           </RecruiterMsg>
         </div>
@@ -377,7 +431,7 @@ const Game = () => {
 
       {records && (
         <div style={updateDivImg()} className="Back-img">
-          <Records />
+          <Records points={points} />
         </div>
       )}
       {!recruiterMsg && !endMsg && !records && (
@@ -401,11 +455,25 @@ const Game = () => {
           recruiter={level === 'recruiter'}
         />
         <p
-          className={counter % 2 === 0 && bonus > 0 ? 'Bonus' : ''}
-        >{`${bonus}+`}</p>
+          className={
+            counter % 2 === 0 && bonus[0] && bonus[0] === 1
+              ? 'Bonus3'
+              : counter % 2 === 0 && bonus[0]
+              ? 'Bonus1'
+              : ''
+          }
+          style={{ color: bonus[2] }}
+        >{`${bonus[0] > 1 ? bonus[0] : ''}${bonus[1]}`}</p>
         <p
-          className={counter % 2 === 1 && bonus > 0 ? 'Bonus2' : ''}
-        >{`${bonus}+`}</p>
+          className={
+            counter % 2 === 1 && bonus[0] && bonus[0] === 1
+              ? 'Bonus3'
+              : counter % 2 === 1 && bonus[0]
+              ? 'Bonus2'
+              : ''
+          }
+          style={{ color: bonus[2] }}
+        >{`${bonus[0] > 1 ? bonus[0] : ''}${bonus[1]}`}</p>
       </div>
     </div>
   );
