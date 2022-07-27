@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Git Collection
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ReactJS application that uses Create-React-App and the React-icons library.
 
-## Available Scripts
+It's a game that tries to reflect in a playful way the beginning of a web developer's professional journey. Images of web-related technologies appear on the screen randomly and you need to click on them to score points. Highscores are saved locally using the client browser's localStorage.
 
-In the project directory, you can run:
+I hope you guys have fun!!!
 
-### `npm start`
+https://webskills.netlify.app/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img src="./src/assets/img/tela1.jpg" width="460">
+<img src="./src/assets/img/tela2.jpg" width="460">
+<img src="./src/assets/img/tela3.jpg" width="460">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Starting
 
-### `npm test`
+These instructions will allow you to make a working copy of the project on your local machine for development and testing purposes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 📋 Prerequisites
 
-### `npm run build`
+What things do you need to install the software?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+node.js ^12
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🔧 Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Make a clone of this repository and install it in your development environment using the following command in your terminal (choose an appropriate directory):
 
-### `npm run eject`
+```
+git clone https://github.com/decarolis/webskills.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After cloning the repository content, access the created directory and install the dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+cd gitcollection
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm install
+```
 
-## Learn More
+After this installation, run the application with the npm start command. The application will be available at http://localhost:3000.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🛠️ built with
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [React: 18.2.0]
+- [React-dom: 18.2.0]
+- [React-icons: 4.4.0]
+- [React-router-dom: 6.3.0]
 
-### Code Splitting
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This project is under the MIT License
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+⌨️ with ❤️ by [André De Carolis](https://github.com/decarolis) 😊
