@@ -4,7 +4,7 @@
   font-size: 5rem !important;
   opacity: 1 !important;
   transform: rotate(1440deg);
-  transition: top 1.2s ease-out, transform 2.2s ease-out, opacity .6s linear;
+  transition: top 1s ease-out, transform 1.2s ease-out, opacity .6s linear;
 }
 
 .Tec-icon2 {
@@ -13,7 +13,6 @@
   font-size: 5rem !important;
   opacity: .2 !important;
   transform: none;
-  transition: transform 1.2s ease-out, opacity .6s linear;
 }
 
 @media (max-width: 600px) {

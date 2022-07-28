@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { TiHtml5 } from 'react-icons/ti';
 import {
   SiCss3,
@@ -16,18 +16,12 @@ import { TbBrandJavascript } from 'react-icons/tb';
 import './styles.css';
 
 const TecIcons = ({ iconProps, recruiter }) => {
-  const [iconOccurrence, setIconOccurrence] = React.useState([]);
-  const [iconRecruiterCase, setIconRecruiterCase] = React.useState({});
-  const [iconStyle, setIconStyle] = React.useState({});
+  const [iconOccurrence, setIconOccurrence] = useState([]);
+  const [classTecIcon, setClassTecIcon] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (iconProps.name) {
       setIconOccurrence((prev) => [...prev, iconProps.name]);
-      setIconRecruiterCase((prev) => ({
-        ...prev,
-        [iconProps.name]: iconProps.recruiterCase,
-      }));
-      setIconStyle((prev) => ({ ...prev, [iconProps.name]: iconProps.style }));
     }
   }, [iconProps]);
 
@@ -35,182 +29,82 @@ const TecIcons = ({ iconProps, recruiter }) => {
     let count = 0;
     iconOccurrence.forEach((v) => v === icon && count++);
     if (recruiter) {
-      if (count === recruiterValue) return 'Tec-icon';
-      return '';
+      if (count === recruiterValue) return true;
+      return false;
     } else if (count >= 3 && count % 3 === 0) {
-      return 'Tec-icon';
+      return true;
     } else if (count >= 3 && count % 3 === 1) {
-      return 'Tec-icon';
+      return true;
     } else if (count >= 3 && count % 3 === 2) {
-      return '';
+      return false;
     } else {
       return false;
     }
-
-    // {
-    //   return count >= 3 && count % 3 === 0 && count % 3 === 1;
-    // }
   };
 
-  // React.useEffect(() => {
-  //   if (recruiter) {
-  //     if (getOccurrence(iconProps.name, iconProps.recruiterCase)) {
-  //       bonus(5);
-  //     } else {
-  //       bonus(0);
-  //     }
-  //   }
-  //   if (getOccurrence(iconProps.name)) {
-  //     bonus(5);
-  //   } else {
-  //     bonus(0);
-  //   }
-  // });
+  const temp = getOccurrence(iconProps.name, iconProps.recruiterCase);
+
+  useEffect(() => {
+    if (temp) {
+      setClassTecIcon((prev) => ({ ...prev, [iconProps.name]: true }));
+    } else {
+      setClassTecIcon((prev) => ({ ...prev, [iconProps.name]: false }));
+    }
+  }, [iconProps, temp]);
 
   return (
     <>
+      <TiHtml5 className={classTecIcon.TiHtml5 ? '' : 'Tec-icon2'} />
       <TiHtml5
-        className={
-          !getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5) && 'Tec-icon2'
-        }
+        className={classTecIcon.TiHtml5 ? 'Tec-icon' : ''}
+        style={{ color: '#000000', background: '#CC341D', borderRadius: '5%' }}
       />
-      <TiHtml5
-        className={getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5)}
-        style={
-          getOccurrence('TiHtml5', iconRecruiterCase.TiHtml5)
-            ? iconStyle.TiHtml5
-            : ''
-        }
-      ></TiHtml5>
+      <SiCss3 className={classTecIcon.SiCss3 ? '' : 'Tec-icon2'} />
       <SiCss3
-        className={
-          !getOccurrence('SiCss3', iconRecruiterCase.SiCss3) && 'Tec-icon2'
-        }
+        className={classTecIcon.SiCss3 ? 'Tec-icon' : ''}
+        style={{ color: '#1752a2', background: '', borderRadius: '5%' }}
       />
-      <SiCss3
-        className={getOccurrence('SiCss3', iconRecruiterCase.SiCss3)}
-        style={
-          getOccurrence('SiCss3', iconRecruiterCase.SiCss3)
-            ? iconStyle.SiCss3
-            : ''
-        }
-      />
+      <SiGit className={classTecIcon.SiGit ? '' : 'Tec-icon2'} />
       <SiGit
-        className={
-          !getOccurrence('SiGit', iconRecruiterCase.SiGit) && 'Tec-icon2'
-        }
-      />
-      <SiGit
-        className={getOccurrence('SiGit', iconRecruiterCase.SiGit)}
-        style={
-          getOccurrence('SiGit', iconRecruiterCase.SiGit) ? iconStyle.SiGit : ''
-        }
+        className={classTecIcon.SiGit ? 'Tec-icon' : ''}
+        style={{ color: '#DA3726', background: '', borderRadius: '' }}
       />
       <TbBrandJavascript
-        className={
-          !getOccurrence(
-            'TbBrandJavascript',
-            iconRecruiterCase.TbBrandJavascript
-          ) && 'Tec-icon2'
-        }
+        className={classTecIcon.TbBrandJavascript ? '' : 'Tec-icon2'}
       />
       <TbBrandJavascript
-        className={getOccurrence(
-          'TbBrandJavascript',
-          iconRecruiterCase.TbBrandJavascript
-        )}
-        style={
-          getOccurrence(
-            'TbBrandJavascript',
-            iconRecruiterCase.TbBrandJavascript
-          )
-            ? iconStyle.TbBrandJavascript
-            : ''
-        }
+        className={classTecIcon.TbBrandJavascript ? 'Tec-icon' : ''}
+        style={{ color: '#000000', background: '#E5CE18', borderRadius: '5%' }}
       />
+      <SiSass className={classTecIcon.SiSass ? '' : 'Tec-icon2'} />
       <SiSass
-        className={
-          !getOccurrence('SiSass', iconRecruiterCase.SiSass) && 'Tec-icon2'
-        }
+        className={classTecIcon.SiSass ? 'Tec-icon' : ''}
+        style={{ color: '#B3487E', background: '', borderRadius: '' }}
       />
-      <SiSass
-        className={getOccurrence('SiSass', iconRecruiterCase.SiSass)}
-        style={
-          getOccurrence('SiSass', iconRecruiterCase.SiSass)
-            ? iconStyle.SiSass
-            : ''
-        }
-      />
+      <SiNodedotjs className={classTecIcon.SiNodedotjs ? '' : 'Tec-icon2'} />
       <SiNodedotjs
-        className={
-          !getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs) &&
-          'Tec-icon2'
-        }
+        className={classTecIcon.SiNodedotjs ? 'Tec-icon' : ''}
+        style={{ color: '#ffffff', background: '#66A731', borderRadius: '5%' }}
       />
-      <SiNodedotjs
-        className={getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)}
-        style={
-          getOccurrence('SiNodedotjs', iconRecruiterCase.SiNodedotjs)
-            ? iconStyle.SiNodedotjs
-            : ''
-        }
-      />
+      <SiMysql className={classTecIcon.SiMysql ? '' : 'Tec-icon2'} />
       <SiMysql
-        className={
-          !getOccurrence('SiMysql', iconRecruiterCase.SiMysql) && 'Tec-icon2'
-        }
+        className={classTecIcon.SiMysql ? 'Tec-icon' : ''}
+        style={{ color: '#16374F', background: '#CC5A21', borderRadius: '5%' }}
       />
-      <SiMysql
-        className={getOccurrence('SiMysql', iconRecruiterCase.SiMysql)}
-        style={
-          getOccurrence('SiMysql', iconRecruiterCase.SiMysql)
-            ? iconStyle.SiMysql
-            : ''
-        }
-      />
+      <SiMongodb className={classTecIcon.SiMongodb ? '' : 'Tec-icon2'} />
       <SiMongodb
-        className={
-          !getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb) &&
-          'Tec-icon2'
-        }
+        className={classTecIcon.SiMongodb ? 'Tec-icon' : ''}
+        style={{ color: '#1CE04D', background: '#000000', borderRadius: '50%' }}
       />
-      <SiMongodb
-        className={getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)}
-        style={
-          getOccurrence('SiMongodb', iconRecruiterCase.SiMongodb)
-            ? iconStyle.SiMongodb
-            : ''
-        }
-      />
+      <SiReact className={classTecIcon.SiReact ? '' : 'Tec-icon2'} />
       <SiReact
-        className={
-          !getOccurrence('SiReact', iconRecruiterCase.SiReact) && 'Tec-icon2'
-        }
+        className={classTecIcon.SiReact ? 'Tec-icon' : ''}
+        style={{ color: '#4EC4E9', background: '', borderRadius: '' }}
       />
-      <SiReact
-        className={getOccurrence('SiReact', iconRecruiterCase.SiReact)}
-        style={
-          getOccurrence('SiReact', iconRecruiterCase.SiReact)
-            ? iconStyle.SiReact
-            : ''
-        }
-      />
+      <SiTypescript className={classTecIcon.SiTypescript ? '' : 'Tec-icon2'} />
       <SiTypescript
-        className={
-          !getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript) &&
-          'Tec-icon2'
-        }
-      />
-      <SiTypescript
-        className={getOccurrence(
-          'SiTypescript',
-          iconRecruiterCase.SiTypescript
-        )}
-        style={
-          getOccurrence('SiTypescript', iconRecruiterCase.SiTypescript)
-            ? iconStyle.SiTypescript
-            : ''
-        }
+        className={classTecIcon.SiTypescript ? 'Tec-icon' : ''}
+        style={{ color: '#265BAD', background: '', borderRadius: '' }}
       />
     </>
   );

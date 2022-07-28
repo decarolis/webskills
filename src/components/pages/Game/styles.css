@@ -43,7 +43,7 @@
   vertical-align: bottom;
 }
 .Back-screen > * {
-  font-size: 0;
+  font-size: 1px;
   position: relative;
   top: 0;
   opacity: 0;
@@ -155,5 +155,59 @@
   .Info-bar-top {
     flex-direction: column;
     justify-content: space-around;
+  }
+}
+
+
+
+
+
+
+.Tec-icon {
+  top: calc(100vh - 7rem) !important;
+  margin: 0 1rem;
+  font-size: 5rem !important;
+  opacity: 1 !important;
+  transform: rotate(1440deg);
+  transition: top 1s ease-out, transform 1.2s ease-out, opacity .6s linear;
+}
+
+.Tec-icon2 {
+  margin: 0 1rem;
+  top: calc(100vh - 7rem) !important;
+  font-size: 5rem !important;
+  opacity: .2 !important;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .Tec-icon {
+    margin: 0 .5rem;
+  }
+
+  .Tec-icon2 {
+    margin: 0 .5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .Tec-icon {
+    margin: 0 .2rem;
+  }
+
+  .Tec-icon2 {
+    margin: 0 .2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .Tec-icon {
+    top: calc(100vh - 14rem) !important;
+    margin: 0 .5rem;
+  }
+
+  .Tec-icon2 {
+    top: calc(100vh - 14rem) !important;
+    margin: 0 .5rem;
   }
 }

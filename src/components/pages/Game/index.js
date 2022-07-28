@@ -62,6 +62,7 @@ import './styles.css';
 const tecImages = [
   {
     name: TiHtml5,
+    nickname: 'TiHtml5',
     color: '#000000',
     back: '#CC341D',
     radius: '5%',
@@ -71,6 +72,7 @@ const tecImages = [
   },
   {
     name: SiCss3,
+    nickname: 'SiCss3',
     color: '#1752a2',
     back: '',
     radius: '5%',
@@ -80,6 +82,7 @@ const tecImages = [
   },
   {
     name: SiGit,
+    nickname: 'SiGit',
     color: '#DA3726',
     back: '',
     radius: '',
@@ -89,6 +92,7 @@ const tecImages = [
   },
   {
     name: TbBrandJavascript,
+    nickname: 'TbBrandJavascript',
     color: '#000000',
     back: '#E5CE18',
     radius: '5%',
@@ -98,6 +102,7 @@ const tecImages = [
   },
   {
     name: SiSass,
+    nickname: 'SiSass',
     color: '#B3487E',
     back: '',
     radius: '',
@@ -107,6 +112,7 @@ const tecImages = [
   },
   {
     name: SiNodedotjs,
+    nickname: 'SiNodedotjs',
     color: '#ffffff',
     back: '#66A731',
     radius: '5%',
@@ -116,6 +122,7 @@ const tecImages = [
   },
   {
     name: SiMysql,
+    nickname: 'SiMysql',
     color: '#16374F',
     back: '#CC5A21',
     radius: '5%',
@@ -125,6 +132,7 @@ const tecImages = [
   },
   {
     name: SiMongodb,
+    nickname: 'SiMongodb',
     color: '#1CE04D',
     back: '#000000',
     radius: '50%',
@@ -134,6 +142,7 @@ const tecImages = [
   },
   {
     name: SiReact,
+    nickname: 'SiReact',
     color: '#4EC4E9',
     back: '',
     radius: '',
@@ -143,6 +152,7 @@ const tecImages = [
   },
   {
     name: SiTypescript,
+    nickname: 'SiTypescript',
     color: '#265BAD',
     back: '',
     radius: '',
@@ -354,13 +364,8 @@ const Game = () => {
     }
     setCounterImg(counter % 3);
     setTecIconProps({
-      name: tecImage.name.name,
+      name: tecImage.nickname,
       recruiterCase: tecImage.recruiter,
-      style: {
-        color: tecImage.color,
-        background: tecImage.back,
-        borderRadius: tecImage.radius,
-      },
     });
     let interval;
     setIntervalLevel(Math.floor(intervalLevel * 0.99));
@@ -453,11 +458,7 @@ const Game = () => {
       )}
       <div className="Info-bar-bottom"></div>
       <div className="Back-screen">
-        <TecIcons
-          points={points}
-          iconProps={tecIconProps}
-          recruiter={level === 'recruiter'}
-        />
+        <TecIcons iconProps={tecIconProps} recruiter={level === 'recruiter'} />
         <p
           className={
             counter % 2 === 0 && bonus[0] && bonus[0] === 1
