@@ -92,3 +92,10 @@
     transform: translate(0);
   }
 }
+
+@media (max-width: 720px) {
+  .Button button, .Button button::after {
+    width: 16rem;
+    height: 5rem;
+  }
+}

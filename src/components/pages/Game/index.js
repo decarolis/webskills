@@ -287,7 +287,7 @@ const Game = () => {
       let xDiv = Math.floor(window.innerWidth / 2.715);
       let yDiv = Math.floor(xDiv / 1.49);
       if (window.innerWidth <= 720) {
-        xDiv = Math.floor(window.innerWidth / 2.715);
+        xDiv = Math.floor(window.innerWidth / 2.0);
         yDiv = Math.floor(xDiv * 1.49);
       }
       return { width: xDiv + 'px', height: yDiv + 'px' };
@@ -295,7 +295,7 @@ const Game = () => {
       let yDiv = Math.floor(window.innerHeight / 2.715);
       let xDiv = Math.floor(yDiv / 0.67);
       if (window.innerWidth <= 720) {
-        yDiv = Math.floor(window.innerHeight / 2.715);
+        yDiv = Math.floor(window.innerHeight / 2.0);
         xDiv = Math.floor(yDiv * 0.67);
       }
       return { width: xDiv + 'px', height: yDiv + 'px' };

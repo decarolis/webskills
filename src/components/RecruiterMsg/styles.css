@@ -132,3 +132,10 @@
     transform: translate(0);
   }
 }
+
+@media (max-width: 720px) {
+  .Recruiter-msg button, .Recruiter-msg button::after {
+    width: 16rem;
+    height: 5rem;
+  }
+}

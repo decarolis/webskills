@@ -5,12 +5,18 @@
   background-image: url(./assets/img/background.jpeg);
   background-size: cover;
   background-position: center center;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 @media (max-width: 720px) {
   .App {
     background-image: url(./assets/img/background2.jpeg);
+    overflow: hidden;
+    height: 100vh;
+    max-height: -moz-available;
+    max-height: -webkit-fill-available;
+    max-height: stretch;
+
   }
 }
 

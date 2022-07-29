@@ -1,5 +1,6 @@
 .Select select {
   text-align: center;
+  text-align-last: center;
   width: 27rem;
   height: 8rem;
   margin: 2rem;
@@ -44,4 +45,15 @@
     transform: translate(0, 0);
   }
 
+}
+
+@media (max-width: 720px) {
+  .Select select {
+    width: 16rem;
+    height: 5rem;
+  }
+
+  .Select select:hover {
+    font-size: 1.8rem;
+  }
 }

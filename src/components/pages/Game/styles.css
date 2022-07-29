@@ -2,7 +2,7 @@
   background-color: rgba(0, 0, 0, .3);
   font-size: 3rem;
   height: 100vh;
-  cursor: url('../../../assets/img/brain.png') 53 64, auto;
+  cursor: url('../../../assets/img/brain.png') 45 55, auto;
 }
 
 .Game:active {
@@ -34,7 +34,7 @@
 
 .Back-screen {
   background-color: rgba(0, 0, 0, 0);
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   height: 100vh;
@@ -42,15 +42,16 @@
   pointer-events: none;
   vertical-align: bottom;
 }
+
 .Back-screen > * {
-  font-size: 1px;
-  position: relative;
+  font-size: 0;
+  position: sticky;
   top: 0;
   opacity: 0;
 }
 
 .Bonus1 {
-  top: 1rem !important;
+  top: 70px !important;
   font-size: 8rem !important;
   opacity: .8 !important;
   transform: rotate(720deg);
@@ -58,7 +59,7 @@
 }
 
 .Bonus2 {
-  top: 1rem !important;
+  top: 70px !important;
   font-size: 8rem !important;
   opacity: .8 !important;
   transform: rotate(-720deg);
@@ -66,7 +67,7 @@
 }
 
 .Bonus3 {
-  top: 4rem !important;
+  top: 70px !important;
   font-size: 3rem !important;
   opacity: .8 !important;
   color: #ffffff;
@@ -108,6 +109,7 @@
 }
 
 .Back-img {
+  background-color: #000000;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -136,6 +138,25 @@
     border-top: 2rem solid #23401b;
     border-left: 1.2rem solid #142610;
     border-bottom: 2rem solid #23401b;
+    outline: #408722 solid 0.2rem;
+
+  }
+
+  .Back-screen {
+    max-height: -moz-available;
+    max-height: -webkit-fill-available;
+    max-height: stretch;
+  }
+
+  .Game {
+    height: 100vh;
+    max-height: -moz-available;
+    max-height: -webkit-fill-available;
+    max-height: stretch;
+  }
+
+  .Logo {
+    display: none;
   }
 }
 
@@ -145,69 +166,5 @@
   }
 }
 
-@media (max-width: 450px) {
-  .Info-bar-bottom {
-    height: 110px;
-  }
-}
-
-@media (max-width: 400px) {
-  .Info-bar-top {
-    flex-direction: column;
-    justify-content: space-around;
-  }
-}
 
 
-
-
-
-
-.Tec-icon {
-  top: calc(100vh - 7rem) !important;
-  margin: 0 1rem;
-  font-size: 5rem !important;
-  opacity: 1 !important;
-  transform: rotate(1440deg);
-  transition: top 1s ease-out, transform 1.2s ease-out, opacity .6s linear;
-}
-
-.Tec-icon2 {
-  margin: 0 1rem;
-  top: calc(100vh - 7rem) !important;
-  font-size: 5rem !important;
-  opacity: .2 !important;
-  transform: none;
-}
-
-@media (max-width: 600px) {
-  .Tec-icon {
-    margin: 0 .5rem;
-  }
-
-  .Tec-icon2 {
-    margin: 0 .5rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .Tec-icon {
-    margin: 0 .2rem;
-  }
-
-  .Tec-icon2 {
-    margin: 0 .2rem;
-  }
-}
-
-@media (max-width: 450px) {
-  .Tec-icon {
-    top: calc(100vh - 14rem) !important;
-    margin: 0 .5rem;
-  }
-
-  .Tec-icon2 {
-    top: calc(100vh - 14rem) !important;
-    margin: 0 .5rem;
-  }
-}
