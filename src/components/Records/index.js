@@ -28,17 +28,20 @@ const Records = ({ points }) => {
 
   useEffect(() => {
     let scores = JSON.parse(localStorage.getItem(level));
-    if (scores && points > 0) {
-      for (let i = 0; i < 3; i++) {
-        if (points > scores[i][1]) {
-          scores.splice(i, 0, ['Ghost Player', points]);
-          scores.pop();
-          setPosition(i);
-          setRecordAlert(true);
-          break;
-        }
-      }
+    if (scores) {
       setScoreRecords(scores);
+      if (scores && points > 0) {
+        for (let i = 0; i < 3; i++) {
+          if (points > scores[i][1]) {
+            scores.splice(i, 0, ['Ghost Player', points]);
+            scores.pop();
+            setPosition(i);
+            setRecordAlert(true);
+            break;
+          }
+        }
+        setScoreRecords(scores);
+      }
     } else if (points > 0) {
       setScoreRecords((prev) => {
         prev.splice(0, 1, ['Ghost Player', points]);
