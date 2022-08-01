@@ -57,6 +57,11 @@
   align-items: center;
 }
 
+.Info-bar-top > *{
+  text-align: center;
+  min-width: 33%;
+}
+
 .Info-bar-top .Logo p {
   color: #ffffff;
 }

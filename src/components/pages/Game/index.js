@@ -433,7 +433,8 @@ const Game = () => {
           <RecruiterMsg welcome={false} displayClass={{ display: 'block' }}>
             <p>Thank you very much for your time!</p>
             <p>
-              If you want to know more about me, visit my profile on{' '}
+              Now you know a little bit more about my path, if you want to know
+              more about who i am, just visit my profile on{' '}
               <a
                 rel="noopener noreferrer"
                 target="_blank"
