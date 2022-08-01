@@ -9,6 +9,34 @@
   cursor: url('../../../assets/img/brainred.png') 53 64, auto;
 }
 
+.Tec-image {
+  transition: transform .2s ease-out;
+  -webkit-animation: myOrbit 0.2s linear infinite;
+  -moz-animation: myOrbit 0.2s linear infinite;
+  -o-animation: myOrbit 0.2s linear infinite;
+  animation: myOrbit 0.2s linear infinite;
+}
+
+@-webkit-keyframes myOrbit {
+  from { -webkit-transform: rotate(0deg) translateX(.1rem) rotate(0deg); }
+  to   { -webkit-transform: rotate(360deg) translateX(.1rem) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbit {
+  from { -moz-transform: rotate(0deg) translateX(.1rem) rotate(0deg); }
+  to   { -moz-transform: rotate(360deg) translateX(.1rem) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbit {
+  from { -o-transform: rotate(0deg) translateX(.1rem) rotate(0deg); }
+  to   { -o-transform: rotate(360deg) translateX(.1rem) rotate(-360deg); }
+}
+
+@keyframes myOrbit {
+  from { transform: rotate(0deg) translateX(.1rem) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(.1rem) rotate(-360deg); }
+}
+
 
 .Tec-image:active {
   cursor:  url('../../../assets/img/braingreen.png') 53 64, auto;
@@ -24,7 +52,8 @@
   height: 70px;
   padding: 0 2rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-content: center;
   align-items: center;
 }
 
@@ -67,7 +96,7 @@
 }
 
 .Bonus3 {
-  top: 70px !important;
+  top: 90px !important;
   font-size: 3rem !important;
   opacity: .8 !important;
   color: #ffffff;
@@ -153,16 +182,6 @@
     max-height: -moz-available;
     max-height: -webkit-fill-available;
     max-height: stretch;
-  }
-
-  .Logo {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .Logo {
-    display: none;
   }
 }
 

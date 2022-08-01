@@ -47,11 +47,11 @@
 
 @media (max-width: 300px) {
   .Tec-icon {
-    margin: 0 ;
+    font-size: 3.7rem !important;
   }
 
   .Tec-icon2 {
-    margin: 0;
+    font-size: 3.7rem !important;
   }
 }
 

@@ -28,7 +28,7 @@ const Records = ({ points }) => {
 
   useEffect(() => {
     let scores = JSON.parse(localStorage.getItem(level));
-    if (scores) {
+    if (scores && points > 0) {
       for (let i = 0; i < 3; i++) {
         if (points > scores[i][1]) {
           scores.splice(i, 0, ['Ghost Player', points]);
@@ -39,7 +39,7 @@ const Records = ({ points }) => {
         }
       }
       setScoreRecords(scores);
-    } else {
+    } else if (points > 0) {
       setScoreRecords((prev) => {
         prev.splice(0, 1, ['Ghost Player', points]);
         return prev;
@@ -73,7 +73,7 @@ const Records = ({ points }) => {
   return (
     <div className="Records-cover">
       <div style={displayFlex} className="Records">
-        {(recordAlert || scoreRecords[0][1] === 0) && (
+        {recordAlert && (
           <>
             <p>
               Congratulations, you got a new record!
@@ -95,7 +95,7 @@ const Records = ({ points }) => {
             </form>
           </>
         )}
-        {!(recordAlert || scoreRecords[0][1] === 0) && (
+        {!recordAlert && (
           <>
             <p>
               Well done! To keep it fun, just go back to home and choose one of

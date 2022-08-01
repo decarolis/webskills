@@ -81,9 +81,4 @@ a {
   }
 }
 
-@media (max-width: 300px) {
-  html {
-    font-size: 30%;
-  }
 
-}

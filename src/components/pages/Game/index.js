@@ -63,6 +63,7 @@ const tecImages = [
   {
     name: TiHtml5,
     nickname: 'TiHtml5',
+    title: 'HTML5 +',
     color: '#000000',
     back: '#CC341D',
     radius: '5%',
@@ -73,6 +74,7 @@ const tecImages = [
   {
     name: SiCss3,
     nickname: 'SiCss3',
+    title: 'CSS3 +',
     color: '#1752a2',
     back: '',
     radius: '5%',
@@ -83,6 +85,7 @@ const tecImages = [
   {
     name: SiGit,
     nickname: 'SiGit',
+    title: 'Git +',
     color: '#DA3726',
     back: '',
     radius: '',
@@ -93,6 +96,7 @@ const tecImages = [
   {
     name: TbBrandJavascript,
     nickname: 'TbBrandJavascript',
+    title: 'JavaScript +',
     color: '#000000',
     back: '#E5CE18',
     radius: '5%',
@@ -103,6 +107,7 @@ const tecImages = [
   {
     name: SiSass,
     nickname: 'SiSass',
+    title: 'Sass +',
     color: '#B3487E',
     back: '',
     radius: '',
@@ -113,6 +118,7 @@ const tecImages = [
   {
     name: SiNodedotjs,
     nickname: 'SiNodedotjs',
+    title: 'NodeJs +',
     color: '#ffffff',
     back: '#66A731',
     radius: '5%',
@@ -123,6 +129,7 @@ const tecImages = [
   {
     name: SiMysql,
     nickname: 'SiMysql',
+    title: 'MySQL +',
     color: '#16374F',
     back: '#CC5A21',
     radius: '5%',
@@ -133,6 +140,7 @@ const tecImages = [
   {
     name: SiMongodb,
     nickname: 'SiMongodb',
+    title: 'MongoDB +',
     color: '#1CE04D',
     back: '#000000',
     radius: '50%',
@@ -143,6 +151,7 @@ const tecImages = [
   {
     name: SiReact,
     nickname: 'SiReact',
+    title: 'React +',
     color: '#4EC4E9',
     back: '',
     radius: '',
@@ -153,6 +162,7 @@ const tecImages = [
   {
     name: SiTypescript,
     nickname: 'SiTypescript',
+    title: 'TypeScript +',
     color: '#265BAD',
     back: '',
     radius: '',
@@ -356,8 +366,13 @@ const Game = () => {
       }
     };
     if (getOccurrence()) {
-      setBonus([tecImage.bonus[0], tecImage.bonus[1], tecImage.bonus[2]]);
-      setPoints(points + tecImage.bonus[0]);
+      if (level === 'recruiter') {
+        setBonus([2, tecImage.title, tecImage.bonus[2]]);
+        setPoints(points + tecImage.bonus[0]);
+      } else {
+        setBonus([tecImage.bonus[0], tecImage.bonus[1], tecImage.bonus[2]]);
+        setPoints(points + tecImage.bonus[0]);
+      }
     } else {
       setBonus([0, '', '']);
       setPoints(points + 1);
@@ -385,16 +400,22 @@ const Game = () => {
   return (
     <div className="Game">
       <header className="Info-bar-top">
-        <Link to={'/'} className="Logo">
-          <p>Web Skills</p>
-        </Link>
-        <p
-          className={bonus[0] ? 'Point-bonus' : 'Point'}
-          style={bonus[0] ? { color: bonus[2] } : {}}
-        >
-          {points}
-        </p>
-        <Lifes quantity={lifesQt} />
+        {(window.innerWidth > 720 || level === 'recruiter') && (
+          <Link to={'/'} className="Logo">
+            <p>Web Skills</p>
+          </Link>
+        )}
+        {level !== 'recruiter' && (
+          <>
+            <p
+              className={bonus[0] ? 'Point-bonus' : 'Point'}
+              style={bonus[0] ? { color: bonus[2] } : {}}
+            >
+              {points}
+            </p>
+            <Lifes quantity={lifesQt} />
+          </>
+        )}
       </header>
       {recruiterMsg && (
         <div style={updateDivImg()} className="Back-img">
@@ -461,24 +482,24 @@ const Game = () => {
         <TecIcons iconProps={tecIconProps} recruiter={level === 'recruiter'} />
         <p
           className={
-            counter % 2 === 0 && bonus[0] && bonus[0] === 1
+            counter % 2 === 0 && bonus[0] === 1
               ? 'Bonus3'
-              : counter % 2 === 0 && bonus[0]
+              : counter % 2 === 0 && bonus[0] > 1
               ? 'Bonus1'
               : ''
           }
           style={{ color: bonus[2] }}
-        >{`${bonus[0] > 1 ? bonus[0] : ''}${bonus[1]}`}</p>
+        >{`${bonus[0] > 2 ? bonus[0] : ''}${bonus[1]}`}</p>
         <p
           className={
-            counter % 2 === 1 && bonus[0] && bonus[0] === 1
+            counter % 2 === 1 && bonus[0] === 1
               ? 'Bonus3'
-              : counter % 2 === 1 && bonus[0]
+              : counter % 2 === 1 && bonus[0] > 1
               ? 'Bonus2'
               : ''
           }
           style={{ color: bonus[2] }}
-        >{`${bonus[0] > 1 ? bonus[0] : ''}${bonus[1]}`}</p>
+        >{`${bonus[0] > 2 ? bonus[0] : ''}${bonus[1]}`}</p>
       </div>
     </div>
   );
