@@ -1,4 +1,4 @@
-# WebSkills
+# Git Collection
 
 ReactJS application that uses Create-React-App and the React-icons library.
 
@@ -36,7 +36,11 @@ git clone https://github.com/decarolis/webskills.git
 After cloning the repository content, access the created directory and install the dependencies:
 
 ```
+<<<<<<< HEAD
 cd Webskills
+=======
+cd WebSkills
+>>>>>>> 68f8b00ee378aa511c8da8b43e83306792f54ac0
 
 npm install
 ```
