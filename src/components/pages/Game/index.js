@@ -210,6 +210,8 @@ const phrases = {
   ],
 };
 
+let mounted;
+
 const Game = () => {
   const { level } = useParams();
   const [intervalLevel, setIntervalLevel] = useState(
@@ -275,10 +277,13 @@ const Game = () => {
 
   useEffect(() => {
     function handleResize() {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
+      clearTimeout(mounted);
+      mounted = setTimeout(() => {
+        setDimensions({
+          height: window.innerHeight,
+          width: window.innerWidth,
+        });
+      }, 1000);
     }
     window.addEventListener('resize', handleResize);
     return () => {
