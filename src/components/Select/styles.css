@@ -19,6 +19,11 @@
   transition: 1s;
 }
 
+.Select option {
+  text-align: center;
+  text-align-last: center;
+}
+
 .Select select:hover {
   font-size: 2.5rem;
 }
