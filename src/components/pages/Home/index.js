@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 // css
 import './styles.css';
@@ -19,7 +20,11 @@ const Home = () => {
   const [notSelected, setNotSelected] = React.useState('');
   const navigate = useNavigate();
 
-  const handleLevel = (e) => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
+  const handleLevel = e => {
     setLevel(e.target.options[e.target.selectedIndex].text);
   };
 

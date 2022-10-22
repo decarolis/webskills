@@ -17,6 +17,7 @@ import {
 } from 'react-icons/si';
 import { TbBrandJavascript } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
+import ReactGA from 'react-ga';
 
 // img
 import html1 from '../../../assets/img/html1.jpg';
@@ -221,13 +222,13 @@ const Game = () => {
       ? 1000
       : level === 'easy'
       ? 1300
-      : 700
+      : 700,
   );
   const [counter, setCounter] = useState(0);
   const [records, SetRecords] = useState(false);
   const [endMsg, setEndMsg] = useState(false);
   const [recruiterMsg, setRecruiterMsg] = useState(
-    level === 'recruiter' ? true : false
+    level === 'recruiter' ? true : false,
   );
   const [counterImg, setCounterImg] = useState(2);
   const [points, setPoints] = useState(0);
@@ -235,7 +236,7 @@ const Game = () => {
   const [tecImage, setTecImage] = useState(
     level === 'recruiter'
       ? tecImages[recruiterSequence[counter]]
-      : tecImages[Math.floor(Math.random() * 10)]
+      : tecImages[Math.floor(Math.random() * 10)],
   );
   const [imageOccurrence, setImageOccurrence] = React.useState([]);
   const [dimensions, setDimensions] = useState({
@@ -244,6 +245,10 @@ const Game = () => {
   });
   const [lifesQt, setLifesQt] = useState(5);
   const [tecIconProps, setTecIconProps] = useState({});
+
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
 
   useEffect(() => {
     // 37
@@ -267,7 +272,7 @@ const Game = () => {
         setTimeout(() => {
           setBonus(
             [1, phrases.great[Math.floor(Math.random() * 8)]],
-            '#000000'
+            '#000000',
           );
         }, 1000);
       }
@@ -336,14 +341,14 @@ const Game = () => {
       (
         baseY +
         Math.floor(
-          Math.random() * (dimensions.height - baseY * 2 - size - 60) + 30
+          Math.random() * (dimensions.height - baseY * 2 - size - 60) + 30,
         )
       ).toString() + 'px';
     const left =
       (
         baseX +
         Math.floor(
-          Math.random() * (dimensions.width - baseX * 2 - size - 60) + 30
+          Math.random() * (dimensions.width - baseX * 2 - size - 60) + 30,
         )
       ).toString() + 'px';
     const back = tecImage.back;
@@ -359,11 +364,11 @@ const Game = () => {
   };
 
   const handlePoints = () => {
-    setImageOccurrence((prev) => [...prev, tecImage]);
+    setImageOccurrence(prev => [...prev, tecImage]);
     const getOccurrence = () => {
       let count = 0;
       count++; // this time
-      imageOccurrence.forEach((v) => v === tecImage && count++);
+      imageOccurrence.forEach(v => v === tecImage && count++);
       if (level === 'recruiter') {
         return count === tecImage.recruiter;
       } else {
@@ -393,7 +398,7 @@ const Game = () => {
     setTecImage(
       level === 'recruiter'
         ? tecImages[recruiterSequence[counter]]
-        : tecImages[Math.floor(Math.random() * 10)]
+        : tecImages[Math.floor(Math.random() * 10)],
     );
     clearInterval(interval);
   };

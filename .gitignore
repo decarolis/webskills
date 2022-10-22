@@ -1,6 +1,4 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-nada.eslintrcc.js
-nada.eslintignore.text
 
 # dependencies
 /node_modules
@@ -23,3 +21,4 @@ nada.eslintignore.text
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+node_modules
