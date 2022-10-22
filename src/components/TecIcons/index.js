@@ -21,13 +21,13 @@ const TecIcons = ({ iconProps, recruiter }) => {
 
   useEffect(() => {
     if (iconProps.name) {
-      setIconOccurrence((prev) => [...prev, iconProps.name]);
+      setIconOccurrence(prev => [...prev, iconProps.name]);
     }
   }, [iconProps]);
 
   const getOccurrence = (icon, recruiterValue) => {
     let count = 0;
-    iconOccurrence.forEach((v) => v === icon && count++);
+    iconOccurrence.forEach(v => v === icon && count++);
     if (recruiter) {
       if (count === recruiterValue) return true;
       return false;
@@ -46,9 +46,9 @@ const TecIcons = ({ iconProps, recruiter }) => {
 
   useEffect(() => {
     if (temp) {
-      setClassTecIcon((prev) => ({ ...prev, [iconProps.name]: true }));
+      setClassTecIcon(prev => ({ ...prev, [iconProps.name]: true }));
     } else {
-      setClassTecIcon((prev) => ({ ...prev, [iconProps.name]: false }));
+      setClassTecIcon(prev => ({ ...prev, [iconProps.name]: false }));
     }
   }, [iconProps, temp]);
 
