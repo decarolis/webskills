@@ -43,7 +43,7 @@ const Records = ({ points }) => {
         setScoreRecords(scores);
       }
     } else if (points > 0) {
-      setScoreRecords((prev) => {
+      setScoreRecords(prev => {
         prev.splice(0, 1, ['Ghost Player', points]);
         return prev;
       });
@@ -52,16 +52,16 @@ const Records = ({ points }) => {
     }
   }, [level, points]);
 
-  const handleName = (e) => {
+  const handleName = e => {
     setName(e.target.value);
-    setScoreRecords((prev) => {
+    setScoreRecords(prev => {
       prev.splice(position, 1, [e.target.value || 'Ghost Player', points]);
       return prev;
     });
     return;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     localStorage.setItem(level, JSON.stringify(scoreRecords));
     setName('');
